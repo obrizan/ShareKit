@@ -27,7 +27,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SHKSharer.h"
-#import "SHKCustomFormControllerLargeTextField.h"
+//#import "SHKCustomFormControllerLargeTextField.h"
 
 static NSString *const kSHKVkonakteUserId=@"kSHKVkontakteUserId";
 static NSString *const kSHKVkontakteAccessTokenKey=@"kSHKVkontakteAccessToken";
