@@ -86,7 +86,7 @@ static NSString *const kSHKFacebookUserInfo =@"kSHKFacebookUserInfo";
 	if (![fileManager fileExistsAtPath:imagePath]) 
 		[fileManager createDirectoryAtPath:imagePath withIntermediateDirectories:YES attributes:nil error:nil];
 	
-  NSString *uid = [NSString stringWithFormat:@"img-%i-%i", [[NSDate date] timeIntervalSince1970], arc4random()];    
+  NSString *uid = [NSString stringWithFormat:@"img-%f-%i", [[NSDate date] timeIntervalSince1970], arc4random()];    
   // store image in cache
   NSData *imageData = UIImagePNGRepresentation(image);
   imagePath = [imagePath stringByAppendingPathComponent:uid];
@@ -372,7 +372,7 @@ static NSString *const kSHKFacebookUserInfo =@"kSHKFacebookUserInfo";
 - (void)request:(FBRequest*)aRequest didFailWithError:(NSError*)error 
 {
     //if user revoked app permissions
-    if (error.domain == @"facebookErrDomain" && error.code == 10000) {
+    if ([error.domain isEqual: @"facebookErrDomain"] && error.code == 10000) {
         [self shouldReloginWithPendingAction:SHKPendingSend];
     } else {
         [self sendDidFailWithError:error];
